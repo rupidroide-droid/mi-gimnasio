@@ -2,48 +2,160 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<link rel="apple-touch-icon" href="./FFB8CAB0-13CD-4DBB-96A6-D924C18F5F70.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#14283d">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Mi Gimnasio">
+
 <title>Mi Gimnasio</title>
+
 <link rel="manifest" href="./manifest.json">
+<link rel="apple-touch-icon" href="./FFB8CAB0-13CD-4DBB-96A6-D924C18F5F70.png">
+
 <style>
-:root{font-family:-apple-system,BlinkMacSystemFont,Arial,sans-serif;color:#203047;background:#f1f5f9}
+:root{
+  font-family:-apple-system,BlinkMacSystemFont,Arial,sans-serif;
+  color:#203047;
+  background:#f1f5f9;
+}
 *{box-sizing:border-box}
 body{margin:0;padding-bottom:90px}
-header{background:#14283d;color:white;padding:25px 18px 22px}
+header{
+  background:#14283d;
+  color:white;
+  padding:25px 18px 22px;
+}
 header h1{margin:0;font-size:26px}
 header p{margin:7px 0 0;color:#cbd5e1}
 main{padding:15px;max-width:720px;margin:auto}
-.card{background:white;border-radius:15px;padding:17px;margin-bottom:14px;box-shadow:0 2px 8px #0000000a}
+.card{
+  background:white;
+  border-radius:15px;
+  padding:17px;
+  margin-bottom:14px;
+  box-shadow:0 2px 8px #0000000a;
+}
 h2{font-size:20px;margin:0 0 12px}
 h3{font-size:17px}
 .small{font-size:13px;color:#64748b}
-button{border:0;border-radius:10px;background:#166534;color:white;padding:12px 15px;font-size:15px;font-weight:600;cursor:pointer}
+button{
+  border:0;
+  border-radius:10px;
+  background:#166534;
+  color:white;
+  padding:12px 15px;
+  font-size:15px;
+  font-weight:600;
+  cursor:pointer;
+}
 button.secondary{background:#e2e8f0;color:#203047}
 button.danger{background:#b91c1c}
-input,select{width:100%;padding:11px;border:1px solid #cbd5e1;border-radius:9px;font-size:16px;background:white}
-label{font-size:13px;color:#475569;display:block;margin:8px 0 5px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.row{display:flex;gap:9px;align-items:center;flex-wrap:wrap}
-nav{position:fixed;bottom:0;left:0;right:0;background:white;display:flex;border-top:1px solid #ddd;padding-bottom:env(safe-area-inset-bottom)}
-nav button{flex:1;border-radius:0;background:white;color:#334155;font-size:12px;padding:13px 2px}
-nav button.active{color:#166534;background:#dcfce7}
-.exercise{border-top:1px solid #e2e8f0;padding:16px 0}
+button:focus-visible{
+  outline:3px solid #84cc16;
+  outline-offset:2px;
+}
+input,select{
+  width:100%;
+  padding:11px;
+  border:1px solid #cbd5e1;
+  border-radius:9px;
+  font-size:16px;
+  background:white;
+}
+label{
+  font-size:13px;
+  color:#475569;
+  display:block;
+  margin:8px 0 5px;
+}
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+.row{
+  display:flex;
+  gap:9px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:white;
+  display:flex;
+  border-top:1px solid #ddd;
+  padding-bottom:env(safe-area-inset-bottom);
+  z-index:20;
+}
+nav button{
+  flex:1;
+  border-radius:0;
+  background:white;
+  color:#334155;
+  font-size:12px;
+  padding:13px 2px;
+}
+nav button.active{
+  color:#166534;
+  background:#dcfce7;
+}
+.exercise{
+  border-top:1px solid #e2e8f0;
+  padding:16px 0;
+}
 .exercise:first-child{border-top:0}
-.exercise svg{width:100%;max-width:260px;height:115px;background:#f0fdf4;border-radius:12px}
-.exercise .drawing{stroke:#166534;stroke-width:5;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.setrow{display:grid;grid-template-columns:40px 1fr 1fr;gap:8px;align-items:center;margin:8px 0}
+.exercise svg{
+  width:100%;
+  max-width:260px;
+  height:115px;
+  background:#f0fdf4;
+  border-radius:12px;
+}
+.exercise .drawing{
+  stroke:#166534;
+  stroke-width:5;
+  fill:none;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.exercise .technique-button{
+  display:block;
+  width:100%;
+  margin:10px 0 12px;
+  background:#14283d;
+  color:#a3ff67;
+  border:1px solid #166534;
+  text-align:left;
+}
+.setrow{
+  display:grid;
+  grid-template-columns:40px 1fr 1fr;
+  gap:8px;
+  align-items:center;
+  margin:8px 0;
+}
 .setrow span{text-align:center;font-weight:bold}
-.notice{background:#eff6ff;padding:12px;border-radius:10px;font-size:14px}
+.notice{
+  background:#eff6ff;
+  padding:12px;
+  border-radius:10px;
+  font-size:14px;
+}
 .hidden{display:none}
-.stat{font-size:25px;font-weight:700;color:#166534}
+.stat{
+  font-size:25px;
+  font-weight:700;
+  color:#166534;
+}
 </style>
 </head>
+
 <body>
+
 <header>
 <h1>🏋️ Mi Gimnasio</h1>
 <p>Fase 1 · 9 noviembre – 6 diciembre 2026</p>
@@ -61,47 +173,61 @@ nav button.active{color:#166534;background:#dcfce7}
 <script>
 "use strict";
 
+/*
+ * MI GIMNASIO
+ * Fase 1
+ * Compatible con almacenamiento anterior.
+ */
+
 const KEY="mi-gimnasio-fase1-v1";
+
 const initial={
- sessions:[],
- body:[],
- steps:[],
- settings:{}
+  sessions:[],
+  body:[],
+  steps:[],
+  settings:{}
 };
+
 let db;
+
 try{
- db=JSON.parse(localStorage.getItem(KEY))||structuredClone(initial);
- if(!Array.isArray(db.sessions)||!Array.isArray(db.body))throw Error();
-}catch(e){db=structuredClone(initial)}
+  db=JSON.parse(localStorage.getItem(KEY))||structuredClone(initial);
+  if(!Array.isArray(db.sessions)||!Array.isArray(db.body)){
+    throw Error("Datos inválidos");
+  }
+}catch(e){
+  db=structuredClone(initial);
+}
 
 const routines={
- A:[
- ["Sentadilla o prensa",3,"8-10",120,"squat","Piernas y glúteos"],
- ["Press de banca",3,"8-10",120,"press","Pecho y tríceps"],
- ["Jalón al pecho",3,"10-12",90,"pull","Espalda"],
- ["Peso muerto rumano",2,"10",120,"hinge","Isquiotibiales y glúteos"],
- ["Plancha abdominal",3,"30-45 s",60,"plank","Zona media"],
- ["Cinta o bicicleta",1,"10 min",0,"cardio","Cardio suave"]
- ],
- B:[
- ["Peso muerto rumano",3,"8-10",120,"hinge","Cadena posterior"],
- ["Press de hombros",3,"8-10",90,"shoulder","Hombros"],
- ["Remo sentado",3,"10-12",90,"row","Espalda"],
- ["Zancadas",2,"10 por pierna",90,"lunge","Piernas y glúteos"],
- ["Curl de bíceps",2,"12",60,"curl","Bíceps"],
- ["Extensión de tríceps",2,"12",60,"triceps","Tríceps"]
- ],
- C:[
- ["Prensa o sentadilla goblet",3,"10-12",120,"squat","Piernas"],
- ["Press inclinado con mancuernas",3,"10",90,"press","Pecho"],
- ["Remo con apoyo de pecho",3,"10",90,"row","Espalda"],
- ["Hip thrust",3,"10-12",90,"bridge","Glúteos"],
- ["Elevaciones laterales",2,"12-15",60,"shoulder","Hombros"],
- ["Dead bug",3,"10 por lado",60,"plank","Abdominales"]
- ]
+  A:[
+    ["Sentadilla o prensa",3,"8-10",120,"squat","Piernas y glúteos"],
+    ["Press de banca",3,"8-10",120,"press","Pecho y tríceps"],
+    ["Jalón al pecho",3,"10-12",90,"pull","Espalda"],
+    ["Peso muerto rumano",2,"10",120,"hinge","Isquiotibiales y glúteos"],
+    ["Plancha abdominal",3,"30-45 s",60,"plank","Zona media"],
+    ["Cinta o bicicleta",1,"10 min",0,"cardio","Cardio suave"]
+  ],
+  B:[
+    ["Peso muerto rumano",3,"8-10",120,"hinge","Cadena posterior"],
+    ["Press de hombros",3,"8-10",90,"shoulder","Hombros"],
+    ["Remo sentado",3,"10-12",90,"row","Espalda"],
+    ["Zancadas",2,"10 por pierna",90,"lunge","Piernas y glúteos"],
+    ["Curl de bíceps",2,"12",60,"curl","Bíceps"],
+    ["Extensión de tríceps",2,"12",60,"triceps","Tríceps"]
+  ],
+  C:[
+    ["Prensa o sentadilla goblet",3,"10-12",120,"squat","Piernas"],
+    ["Press inclinado con mancuernas",3,"10",90,"press","Pecho"],
+    ["Remo con apoyo de pecho",3,"10",90,"row","Espalda"],
+    ["Hip thrust",3,"10-12",90,"bridge","Glúteos"],
+    ["Elevaciones laterales",2,"12-15",60,"shoulder","Hombros"],
+    ["Dead bug",3,"10 por lado",60,"plank","Abdominales"]
+  ]
 };
 
 const start=new Date(2026,10,9,12);
+
 let currentTab="inicio";
 let selectedRoutine="A";
 let selectedWeek=1;
@@ -109,282 +235,649 @@ let timerInterval=null;
 let timerEnd=0;
 
 function save(){
- try{
- localStorage.setItem(KEY,JSON.stringify(db));
- return true;
- }catch(e){
- alert("No se pudo guardar. Exporta una copia de seguridad y comprueba el espacio disponible.");
- return false;
- }
+  try{
+    localStorage.setItem(KEY,JSON.stringify(db));
+    return true;
+  }catch(e){
+    alert("No se pudo guardar. Exporta una copia de seguridad y comprueba el espacio disponible.");
+    return false;
+  }
 }
+
 function esc(s){
- return String(s??"").replace(/[&<>"']/g,c=>({
- "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
- })[c]);
+  return String(s??"").replace(/[&<>"']/g,c=>({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#39;"
+  })[c]);
 }
+
 function dateISO(d=new Date()){
- const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,"0"),day=String(d.getDate()).padStart(2,"0");
- return y+"-"+m+"-"+day;
+  const y=d.getFullYear();
+  const m=String(d.getMonth()+1).padStart(2,"0");
+  const day=String(d.getDate()).padStart(2,"0");
+  return y+"-"+m+"-"+day;
 }
+
 function plannedDate(w,r){
- let d=new Date(start);
- d.setDate(d.getDate()+(w-1)*7+({A:0,B:2,C:4}[r]));
- return d.toLocaleDateString("es-ES",{day:"numeric",month:"short",year:"numeric"});
+  let d=new Date(start);
+  d.setDate(
+    d.getDate()+(w-1)*7+({A:0,B:2,C:4}[r])
+  );
+  return d.toLocaleDateString("es-ES",{
+    day:"numeric",
+    month:"short",
+    year:"numeric"
+  });
 }
+
+/*
+ * Esquemas originales.
+ * Se mantienen provisionalmente hasta incorporar
+ * las nuevas ilustraciones de técnica.
+ */
+
 function svg(type){
- const shapes={
- squat:'<circle cx="100" cy="25" r="12"/><path d="M100 38 L85 65 L112 80 L130 100 M85 65 L60 90 L80 105 M95 48 L135 48"/>',
- press:'<circle cx="55" cy="75" r="11"/><path d="M67 75 L125 75 L145 98 M92 75 L92 35 M125 75 L125 35 M45 110 L155 110 M70 35 L150 35"/>',
- pull:'<circle cx="105" cy="46" r="11"/><path d="M105 58 L105 100 M105 70 L70 40 L70 22 M105 70 L140 40 L140 22 M105 100 L75 120 M105 100 L135 120 M55 20 L155 20"/>',
- hinge:'<circle cx="115" cy="35" r="11"/><path d="M110 48 L75 80 L110 95 M75 80 L65 115 M110 95 L125 120 M82 72 L55 105 M55 105 L145 105"/>',
- plank:'<circle cx="52" cy="65" r="11"/><path d="M64 70 L150 83 L180 105 M150 83 L160 110 M80 75 L65 110 M35 115 L190 115"/>',
- cardio:'<circle cx="100" cy="35" r="12"/><path d="M100 48 L110 75 L145 90 M110 75 L70 95 M100 55 L70 65 M145 90 L170 110 M70 95 L50 110"/>',
- shoulder:'<circle cx="105" cy="45" r="12"/><path d="M105 58 L105 100 M105 70 L70 45 L70 15 M105 70 L140 45 L140 15 M105 100 L75 125 M105 100 L135 125 M55 15 L85 15 M125 15 L155 15"/>',
- row:'<circle cx="80" cy="48" r="12"/><path d="M85 60 L110 90 L90 120 M110 90 L140 120 M90 75 L155 75 M155 60 L155 95"/>',
- lunge:'<circle cx="100" cy="30" r="12"/><path d="M100 43 L100 85 L65 105 L45 105 M100 85 L145 105 L165 105 M100 60 L75 75 M100 60 L125 75"/>',
- curl:'<circle cx="100" cy="30" r="12"/><path d="M100 43 L100 90 M100 55 L65 75 L75 50 M100 55 L135 75 L125 50 M100 90 L75 125 M100 90 L125 125"/>',
- triceps:'<circle cx="105" cy="35" r="12"/><path d="M105 48 L105 95 M105 60 L75 75 L75 105 M105 60 L135 75 L135 105 M105 95 L80 125 M105 95 L130 125 M55 105 L95 105 M115 105 L155 105"/>',
- bridge:'<circle cx="55" cy="100" r="11"/><path d="M65 95 L110 60 L155 75 L180 110 M105 60 L100 110 M155 75 L145 110 M35 115 L190 115"/>'
- };
- return `<svg viewBox="0 0 210 140" role="img" aria-label="Esquema orientativo del ejercicio">
- <g class="drawing">${shapes[type]||shapes.squat}</g></svg>`;
+  const shapes={
+    squat:'<circle cx="100" cy="25" r="12"/><path d="M100 38 L85 65 L112 80 L130 100 M85 65 L60 90 L80 105 M95 48 L135 48"/>',
+    press:'<circle cx="55" cy="75" r="11"/><path d="M67 75 L125 75 L145 98 M92 75 L92 35 M125 75 L125 35 M45 110 L155 110 M70 35 L150 35"/>',
+    pull:'<circle cx="105" cy="46" r="11"/><path d="M105 58 L105 100 M105 70 L70 40 L70 22 M105 70 L140 40 L140 22 M105 100 L75 120 M105 100 L135 120 M55 20 L155 20"/>',
+    hinge:'<circle cx="115" cy="35" r="11"/><path d="M110 48 L75 80 L110 95 M75 80 L65 115 M110 95 L125 120 M82 72 L55 105 M55 105 L145 105"/>',
+    plank:'<circle cx="52" cy="65" r="11"/><path d="M64 70 L150 83 L180 105 M150 83 L160 110 M80 75 L65 110 M35 115 L190 115"/>',
+    cardio:'<circle cx="100" cy="35" r="12"/><path d="M100 48 L110 75 L145 90 M110 75 L70 95 M100 55 L70 65 M145 90 L170 110 M70 95 L50 110"/>',
+    shoulder:'<circle cx="105" cy="45" r="12"/><path d="M105 58 L105 100 M105 70 L70 45 L70 15 M105 70 L140 45 L140 15 M105 100 L75 125 M105 100 L135 125 M55 15 L85 15 M125 15 L155 15"/>',
+    row:'<circle cx="80" cy="48" r="12"/><path d="M85 60 L110 90 L90 120 M110 90 L140 120 M90 75 L155 75 M155 60 L155 95"/>',
+    lunge:'<circle cx="100" cy="30" r="12"/><path d="M100 43 L100 85 L65 105 L45 105 M100 85 L145 105 L165 105 M100 60 L75 75 M100 60 L125 75"/>',
+    curl:'<circle cx="100" cy="30" r="12"/><path d="M100 43 L100 90 M100 55 L65 75 L75 50 M100 55 L135 75 L125 50 M100 90 L75 125 M100 90 L125 125"/>',
+    triceps:'<circle cx="105" cy="35" r="12"/><path d="M105 48 L105 95 M105 60 L75 75 L75 105 M105 60 L135 75 L135 105 M105 95 L80 125 M105 95 L130 125 M55 105 L95 105 M115 105 L155 105"/>',
+    bridge:'<circle cx="55" cy="100" r="11"/><path d="M65 95 L110 60 L155 75 L180 110 M105 60 L100 110 M155 75 L145 110 M35 115 L190 115"/>'
+  };
+
+  return `
+    <svg viewBox="0 0 210 140"
+      role="img"
+      aria-label="Esquema orientativo del ejercicio">
+      <g class="drawing">
+        ${shapes[type]||shapes.squat}
+      </g>
+    </svg>
+  `;
 }
+
 function show(tab){
- currentTab=tab;
- document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
- document.getElementById("nav-"+tab).classList.add("active");
- if(tab==="inicio")home();
- if(tab==="entrenar")training();
- if(tab==="historial")history();
- if(tab==="peso")bodyPage();
- window.scrollTo(0,0);
+  currentTab=tab;
+
+  document.querySelectorAll("nav button").forEach(
+    b=>b.classList.remove("active")
+  );
+
+  document.getElementById("nav-"+tab).classList.add("active");
+
+  if(tab==="inicio")home();
+  if(tab==="entrenar")training();
+  if(tab==="historial")history();
+  if(tab==="peso")bodyPage();
+
+  window.scrollTo(0,0);
 }
+
 function home(){
- const latest=db.body.at(-1);
- document.getElementById("app").innerHTML=`
- <div class="card">
- <h2>Tu objetivo</h2>
- <div class="grid">
- <div><div class="small">Peso inicial</div><div class="stat">83 kg</div></div>
- <div><div class="small">Peso objetivo</div><div class="stat">75 kg</div></div>
- <div><div class="small">Último peso</div><div class="stat">${latest?esc(latest.weight)+" kg":"Pendiente"}</div></div>
- <div><div class="small">Sesiones guardadas</div><div class="stat">${db.sessions.length}</div></div>
- </div>
- </div>
- <div class="card">
- <h2>Primera fase · 4 semanas</h2>
- <p>3 días de fuerza por semana. Lunes A, miércoles B y viernes C.</p>
- <p class="small">Semana 1: técnica y cargas iniciales.<br>
- Semana 2: consolidar repeticiones.<br>
- Semana 3: progresar si la técnica es correcta.<br>
- Semana 4: evaluar y consolidar.</p>
- <button onclick="show('entrenar')">Abrir mis rutinas</button>
- </div>
- <div class="card">
- <h2>Actividad y nutrición</h2>
- <p><b>2.150 kcal/día</b> como punto de partida orientativo.</p>
- <p>Proteínas: 150 g · Objetivo de pasos inicial: 6.500 diarios de media.</p>
- <div class="notice">Revisaremos la evolución cada semana. No es necesario aumentar las cargas si la técnica o la recuperación no son adecuadas.</div>
- </div>
- <div class="card">
- <h2>Copias de seguridad</h2>
- <p class="small">Tus datos están en este dispositivo y navegador. Exporta copias periódicamente, especialmente antes de borrar la aplicación o cambiar de iPhone.</p>
- <div class="row">
- <button onclick="exportBackup()">Exportar copia</button>
- <button class="secondary" onclick="document.getElementById('restore').click()">Restaurar copia</button>
- </div>
- <input class="hidden" type="file" id="restore" accept="application/json,.json" onchange="importBackup(this)">
- </div>`;
+  const latest=[...db.body].reverse().find(
+    b=>b.weight!==null&&b.weight!==""&&b.weight!==undefined
+  );
+
+  document.getElementById("app").innerHTML=`
+    <div class="card">
+      <h2>Tu objetivo</h2>
+      <div class="grid">
+        <div>
+          <div class="small">Peso inicial</div>
+          <div class="stat">83 kg</div>
+        </div>
+        <div>
+          <div class="small">Peso objetivo</div>
+          <div class="stat">75 kg</div>
+        </div>
+        <div>
+          <div class="small">Último peso</div>
+          <div class="stat">
+            ${latest?esc(latest.weight)+" kg":"Pendiente"}
+          </div>
+        </div>
+        <div>
+          <div class="small">Sesiones guardadas</div>
+          <div class="stat">${db.sessions.length}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Primera fase · 4 semanas</h2>
+      <p>
+        3 días de fuerza por semana.
+        Lunes A, miércoles B y viernes C.
+      </p>
+      <p class="small">
+        Semana 1: técnica y cargas iniciales.<br>
+        Semana 2: consolidar repeticiones.<br>
+        Semana 3: progresar si la técnica es correcta.<br>
+        Semana 4: evaluar y consolidar.
+      </p>
+      <button onclick="show('entrenar')">
+        Abrir mis rutinas
+      </button>
+    </div>
+
+    <div class="card">
+      <h2>Actividad y nutrición</h2>
+      <p>
+        <b>2.150 kcal/día</b>
+        como punto de partida orientativo.
+      </p>
+      <p>
+        Proteínas: 150 g ·
+        Objetivo de pasos inicial:
+        6.500 diarios de media.
+      </p>
+      <div class="notice">
+        Revisaremos la evolución cada semana.
+        No es necesario aumentar las cargas si la
+        técnica o la recuperación no son adecuadas.
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Copias de seguridad</h2>
+      <p class="small">
+        Tus datos están en este dispositivo y navegador.
+        Exporta copias periódicamente, especialmente
+        antes de borrar la aplicación o cambiar de iPhone.
+      </p>
+      <div class="row">
+        <button onclick="exportBackup()">
+          Exportar copia
+        </button>
+        <button class="secondary"
+          onclick="document.getElementById('restore').click()">
+          Restaurar copia
+        </button>
+      </div>
+      <input class="hidden"
+        type="file"
+        id="restore"
+        accept="application/json,.json"
+        onchange="importBackup(this)">
+    </div>
+  `;
 }
+
 function training(){
- document.getElementById("app").innerHTML=`
- <div class="card">
- <h2>Seleccionar entrenamiento</h2>
- <label>Semana</label>
- <select id="week" onchange="selectedWeek=Number(this.value);training()">
- ${[1,2,3,4].map(w=>`<option value="${w}" ${w===selectedWeek?"selected":""}>Semana ${w}</option>`).join("")}
- </select>
- <label>Rutina</label>
- <select id="routine" onchange="selectedRoutine=this.value;training()">
- ${["A","B","C"].map(r=>`<option value="${r}" ${r===selectedRoutine?"selected":""}>Rutina ${r} · ${plannedDate(selectedWeek,r)}</option>`).join("")}
- </select>
- </div>
- <div class="notice" style="margin-bottom:14px">
- Calienta 5–8 minutos. Deja 2–3 repeticiones en reserva al comenzar. Las ilustraciones son orientativas, no sustituyen una demostración técnica.
- </div>
- <div class="card">
- <h2>Rutina ${selectedRoutine} · Semana ${selectedWeek}</h2>
- <label>Fecha real del entrenamiento</label>
- <input type="date" id="sessionDate" value="${dateISO()}">
- ${routines[selectedRoutine].map((e,i)=>exerciseHTML(e,i)).join("")}
- <button onclick="finishSession()">Guardar entrenamiento</button>
- </div>
- <div class="card">
- <h2>Temporizador de descanso</h2>
- <div id="timer" class="stat">00:00</div>
- <div class="row">
- <button onclick="startTimer(60)">60 s</button>
- <button onclick="startTimer(90)">90 s</button>
- <button onclick="startTimer(120)">120 s</button>
- <button class="secondary" onclick="stopTimer()">Detener</button>
- </div>
- </div>`;
+  document.getElementById("app").innerHTML=`
+    <div class="card">
+      <h2>Seleccionar entrenamiento</h2>
+
+      <label>Semana</label>
+      <select id="week"
+        onchange="selectedWeek=Number(this.value);training()">
+        ${[1,2,3,4].map(w=>`
+          <option value="${w}"
+            ${w===selectedWeek?"selected":""}>
+            Semana ${w}
+          </option>
+        `).join("")}
+      </select>
+
+      <label>Rutina</label>
+      <select id="routine"
+        onchange="selectedRoutine=this.value;training()">
+        ${["A","B","C"].map(r=>`
+          <option value="${r}"
+            ${r===selectedRoutine?"selected":""}>
+            Rutina ${r} · ${plannedDate(selectedWeek,r)}
+          </option>
+        `).join("")}
+      </select>
+    </div>
+
+    <div class="notice" style="margin-bottom:14px">
+      Calienta 5–8 minutos.
+      Deja 2–3 repeticiones en reserva al comenzar.
+      Pulsa «Ver técnica» para consultar las
+      instrucciones de cada ejercicio.
+    </div>
+
+    <div class="card">
+      <h2>
+        Rutina ${selectedRoutine} ·
+        Semana ${selectedWeek}
+      </h2>
+
+      <label>Fecha real del entrenamiento</label>
+      <input type="date"
+        id="sessionDate"
+        value="${dateISO()}">
+
+      ${routines[selectedRoutine].map(
+        (e,i)=>exerciseHTML(e,i)
+      ).join("")}
+
+      <button onclick="finishSession()">
+        Guardar entrenamiento
+      </button>
+    </div>
+
+    <div class="card">
+      <h2>Temporizador de descanso</h2>
+      <div id="timer" class="stat">00:00</div>
+      <div class="row">
+        <button onclick="startTimer(60)">60 s</button>
+        <button onclick="startTimer(90)">90 s</button>
+        <button onclick="startTimer(120)">120 s</button>
+        <button class="secondary"
+          onclick="stopTimer()">
+          Detener
+        </button>
+      </div>
+    </div>
+  `;
 }
+
+/*
+ * Ejercicios.
+ * NUEVO: botón de acceso a la ficha técnica.
+ */
+
 function exerciseHTML(e,i){
- const [name,sets,reps,rest,type,muscle]=e;
- const previous=[...db.sessions].reverse().flatMap(s=>s.exercises||[]).find(x=>x.name===name);
- return `<div class="exercise">
- <h3>${i+1}. ${esc(name)}</h3>
- ${svg(type)}
- <p class="small">${esc(muscle)} · ${sets} series · ${esc(reps)} repeticiones · descanso ${rest}s</p>
- ${previous?`<p class="small">Última carga registrada: ${esc(previous.sets?.[0]?.kg??"—")} kg</p>`:""}
- <div class="setrow"><span>Serie</span><span>Kg</span><span>Reps / segundos</span></div>
- ${Array.from({length:sets},(_,j)=>`
- <div class="setrow">
- <span>${j+1}</span>
- <input type="number" min="0" max="1000" step="0.5" inputmode="decimal" id="kg-${i}-${j}" placeholder="kg">
- <input type="number" min="0" max="1000" inputmode="numeric" id="rep-${i}-${j}" placeholder="${esc(reps)}">
- </div>`).join("")}
- </div>`;
+  const [name,sets,reps,rest,type,muscle]=e;
+
+  const previous=[...db.sessions]
+    .reverse()
+    .flatMap(s=>s.exercises||[])
+    .find(x=>x.name===name);
+
+  return `
+    <div class="exercise">
+
+      <h3>${i+1}. ${esc(name)}</h3>
+
+      <button
+        type="button"
+        class="technique-button"
+        data-tecnica="${esc(name)}">
+        📖 Ver técnica del ejercicio
+      </button>
+
+      ${svg(type)}
+
+      <p class="small">
+        ${esc(muscle)} ·
+        ${sets} series ·
+        ${esc(reps)} repeticiones ·
+        descanso ${rest}s
+      </p>
+
+      ${previous?`
+        <p class="small">
+          Última carga registrada:
+          ${esc(previous.sets?.[0]?.kg??"—")} kg
+        </p>
+      `:""}
+
+      <div class="setrow">
+        <span>Serie</span>
+        <span>Kg</span>
+        <span>Reps / segundos</span>
+      </div>
+
+      ${Array.from({length:sets},(_,j)=>`
+        <div class="setrow">
+          <span>${j+1}</span>
+          <input
+            type="number"
+            min="0"
+            max="1000"
+            step="0.5"
+            inputmode="decimal"
+            id="kg-${i}-${j}"
+            placeholder="kg">
+          <input
+            type="number"
+            min="0"
+            max="1000"
+            inputmode="numeric"
+            id="rep-${i}-${j}"
+            placeholder="${esc(reps)}">
+        </div>
+      `).join("")}
+
+    </div>
+  `;
 }
+
 function finishSession(){
- const exercises=routines[selectedRoutine].map((e,i)=>({
- name:e[0],
- sets:Array.from({length:e[1]},(_,j)=>({
- kg:document.getElementById(`kg-${i}-${j}`).value,
- reps:document.getElementById(`rep-${i}-${j}`).value
- }))
- }));
- if(!exercises.some(e=>e.sets.some(s=>s.kg!==""||s.reps!==""))){
- alert("Introduce al menos una serie antes de guardar.");
- return;
- }
- const session={
- id:Date.now()+"-"+Math.random().toString(36).slice(2),
- date:document.getElementById("sessionDate").value,
- week:selectedWeek,
- routine:selectedRoutine,
- exercises
- };
- db.sessions.push(session);
- if(save()){
- alert("Entrenamiento guardado en este iPhone.");
- show("historial");
- }
+  const exercises=routines[selectedRoutine].map(
+    (e,i)=>({
+      name:e[0],
+      sets:Array.from({length:e[1]},(_,j)=>({
+        kg:document.getElementById(
+          `kg-${i}-${j}`
+        ).value,
+        reps:document.getElementById(
+          `rep-${i}-${j}`
+        ).value
+      }))
+    })
+  );
+
+  if(!exercises.some(
+    e=>e.sets.some(
+      s=>s.kg!==""||s.reps!==""
+    )
+  )){
+    alert("Introduce al menos una serie antes de guardar.");
+    return;
+  }
+
+  const session={
+    id:Date.now()+"-"+Math.random().toString(36).slice(2),
+    date:document.getElementById("sessionDate").value,
+    week:selectedWeek,
+    routine:selectedRoutine,
+    exercises
+  };
+
+  db.sessions.push(session);
+
+  if(save()){
+    alert("Entrenamiento guardado en este iPhone.");
+    show("historial");
+  }
 }
+
 function history(){
- document.getElementById("app").innerHTML=`
- <div class="card"><h2>Historial de entrenamientos</h2>
- <p class="small">${db.sessions.length} sesiones registradas</p></div>
- ${[...db.sessions].reverse().map(s=>`
- <div class="card">
- <h3>${esc(s.date)} · Rutina ${esc(s.routine)}</h3>
- <p class="small">Semana ${esc(s.week)}</p>
- ${s.exercises.map(e=>{
- const completed=e.sets.filter(x=>x.kg!==""||x.reps!=="");
- return completed.length?`<p><b>${esc(e.name)}</b><br><span class="small">${completed.map(x=>`${esc(x.kg||"—")} kg × ${esc(x.reps||"—")}`).join(" · ")}</span></p>`:"";
- }).join("")}
- <button class="danger" onclick="deleteSession('${esc(s.id)}')">Eliminar sesión</button>
- </div>`).join("")||'<div class="card">Todavía no hay sesiones registradas.</div>'}`;
+  document.getElementById("app").innerHTML=`
+    <div class="card">
+      <h2>Historial de entrenamientos</h2>
+      <p class="small">
+        ${db.sessions.length} sesiones registradas
+      </p>
+    </div>
+
+    ${[...db.sessions].reverse().map(s=>`
+      <div class="card">
+        <h3>
+          ${esc(s.date)} ·
+          Rutina ${esc(s.routine)}
+        </h3>
+
+        <p class="small">
+          Semana ${esc(s.week)}
+        </p>
+
+        ${(s.exercises||[]).map(e=>{
+          const completed=(e.sets||[]).filter(
+            x=>x.kg!==""||x.reps!==""
+          );
+
+          return completed.length?`
+            <p>
+              <b>${esc(e.name)}</b><br>
+              <span class="small">
+                ${completed.map(x=>`
+                  ${esc(x.kg||"—")} kg ×
+                  ${esc(x.reps||"—")}
+                `).join(" · ")}
+              </span>
+            </p>
+          `:"";
+        }).join("")}
+
+        <button class="danger"
+          onclick="deleteSession('${esc(s.id)}')">
+          Eliminar sesión
+        </button>
+      </div>
+    `).join("")||
+      '<div class="card">Todavía no hay sesiones registradas.</div>'
+    }
+  `;
 }
+
 function deleteSession(id){
- if(!confirm("¿Eliminar definitivamente esta sesión?"))return;
- db.sessions=db.sessions.filter(s=>s.id!==id);
- if(save())history();
+  if(!confirm(
+    "¿Eliminar definitivamente esta sesión?"
+  ))return;
+
+  db.sessions=db.sessions.filter(s=>s.id!==id);
+
+  if(save())history();
 }
+
 function bodyPage(){
- const last=db.body.at(-1);
- document.getElementById("app").innerHTML=`
- <div class="card">
- <h2>Seguimiento corporal</h2>
- <p class="small">Registra tu peso varias mañanas por semana y mide la cintura una vez por semana.</p>
- <label>Fecha</label><input id="bodyDate" type="date" value="${dateISO()}">
- <div class="grid">
- <div><label>Peso corporal (kg)</label><input id="bodyWeight" type="number" step="0.1" min="30" max="300" placeholder="83"></div>
- <div><label>Cintura (cm)</label><input id="bodyWaist" type="number" step="0.1" min="30" max="200" placeholder="Pendiente"></div>
- </div>
- <label>Pasos diarios</label>
- <input id="bodySteps" type="number" min="0" max="100000" placeholder="6500">
- <p><button onclick="saveBody()">Guardar medición</button></p>
- </div>
- <div class="card">
- <h2>Mi evolución</h2>
- <p>Objetivo: <b>75 kg</b></p>
- <p>Último peso: <b>${last?esc(last.weight)+" kg":"sin registrar"}</b></p>
- ${[...db.body].reverse().map((b,i)=>`
- <p>${esc(b.date)} · <b>${esc(b.weight)} kg</b>
- ${b.waist?" · cintura "+esc(b.waist)+" cm":""}
- ${b.steps?" · "+esc(b.steps)+" pasos":""}</p>`).join("")}
- </div>`;
+  const last=[...db.body].reverse().find(
+    b=>b.weight!==null&&b.weight!==""&&b.weight!==undefined
+  );
+
+  document.getElementById("app").innerHTML=`
+    <div class="card">
+      <h2>Seguimiento corporal</h2>
+
+      <p class="small">
+        Registra tu peso varias mañanas por semana
+        y mide la cintura una vez por semana.
+      </p>
+
+      <label>Fecha</label>
+      <input id="bodyDate"
+        type="date"
+        value="${dateISO()}">
+
+      <div class="grid">
+        <div>
+          <label>Peso corporal (kg)</label>
+          <input id="bodyWeight"
+            type="number"
+            step="0.1"
+            min="30"
+            max="300"
+            placeholder="83">
+        </div>
+        <div>
+          <label>Cintura (cm)</label>
+          <input id="bodyWaist"
+            type="number"
+            step="0.1"
+            min="30"
+            max="200"
+            placeholder="Pendiente">
+        </div>
+      </div>
+
+      <label>Pasos diarios</label>
+      <input id="bodySteps"
+        type="number"
+        min="0"
+        max="100000"
+        placeholder="6500">
+
+      <p>
+        <button onclick="saveBody()">
+          Guardar medición
+        </button>
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Mi evolución</h2>
+      <p>Objetivo: <b>75 kg</b></p>
+      <p>
+        Último peso:
+        <b>
+          ${last?esc(last.weight)+" kg":"sin registrar"}
+        </b>
+      </p>
+
+      ${[...db.body].reverse().map(b=>`
+        <p>
+          ${esc(b.date)} ·
+          ${b.weight!==null&&b.weight!==""?
+            `<b>${esc(b.weight)} kg</b>`:"Sin peso"}
+          ${b.waist?
+            " · cintura "+esc(b.waist)+" cm":""}
+          ${b.steps?
+            " · "+esc(b.steps)+" pasos":""}
+        </p>
+      `).join("")}
+    </div>
+  `;
 }
+
 function saveBody(){
- const weight=document.getElementById("bodyWeight").value;
- const waist=document.getElementById("bodyWaist").value;
- const steps=document.getElementById("bodySteps").value;
- if(!weight&&!waist&&!steps){alert("Introduce al menos una medida.");return}
- const item={
- date:document.getElementById("bodyDate").value,
- weight:weight||null,
- waist:waist||null,
- steps:steps||null
- };
- db.body.push(item);
- if(save()){alert("Medición guardada.");bodyPage()}
+  const weight=document.getElementById("bodyWeight").value;
+  const waist=document.getElementById("bodyWaist").value;
+  const steps=document.getElementById("bodySteps").value;
+
+  if(!weight&&!waist&&!steps){
+    alert("Introduce al menos una medida.");
+    return;
+  }
+
+  const item={
+    date:document.getElementById("bodyDate").value,
+    weight:weight||null,
+    waist:waist||null,
+    steps:steps||null
+  };
+
+  db.body.push(item);
+
+  if(save()){
+    alert("Medición guardada.");
+    bodyPage();
+  }
 }
+
 function exportBackup(){
- const blob=new Blob([JSON.stringify({
- app:"mi-gimnasio",
- version:1,
- exportedAt:new Date().toISOString(),
- data:db
- },null,2)],{type:"application/json"});
- const url=URL.createObjectURL(blob);
- const a=document.createElement("a");
- a.href=url;
- a.download="mi-gimnasio-copia-"+dateISO()+".json";
- document.body.appendChild(a);
- a.click();a.remove();
- setTimeout(()=>URL.revokeObjectURL(url),3000);
+  const blob=new Blob([
+    JSON.stringify({
+      app:"mi-gimnasio",
+      version:1,
+      exportedAt:new Date().toISOString(),
+      data:db
+    },null,2)
+  ],{
+    type:"application/json"
+  });
+
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");
+
+  a.href=url;
+  a.download="mi-gimnasio-copia-"+dateISO()+".json";
+
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+
+  setTimeout(()=>URL.revokeObjectURL(url),3000);
 }
+
 async function importBackup(input){
- const file=input.files?.[0];
- if(!file)return;
- if(file.size>5*1024*1024){alert("Archivo demasiado grande.");return}
- try{
- const backup=JSON.parse(await file.text());
- if(backup.app!=="mi-gimnasio"||!backup.data||
- !Array.isArray(backup.data.sessions)||!Array.isArray(backup.data.body))
- throw Error("Formato no válido");
- if(!confirm("Se sustituirán los datos actuales por los de esta copia. ¿Continuar?"))return;
- const old=db;
- db=backup.data;
- if(!save()){db=old;return}
- alert("Copia restaurada correctamente.");
- show("inicio");
- }catch(e){alert("No se pudo restaurar: "+e.message)}
- finally{input.value=""}
+  const file=input.files?.[0];
+
+  if(!file)return;
+
+  if(file.size>5*1024*1024){
+    alert("Archivo demasiado grande.");
+    input.value="";
+    return;
+  }
+
+  try{
+    const backup=JSON.parse(await file.text());
+
+    if(
+      backup.app!=="mi-gimnasio"||
+      !backup.data||
+      !Array.isArray(backup.data.sessions)||
+      !Array.isArray(backup.data.body)
+    ){
+      throw Error("Formato no válido");
+    }
+
+    if(!confirm(
+      "Se sustituirán los datos actuales por los de esta copia. ¿Continuar?"
+    ))return;
+
+    const old=db;
+    db=backup.data;
+
+    if(!save()){
+      db=old;
+      return;
+    }
+
+    alert("Copia restaurada correctamente.");
+    show("inicio");
+
+  }catch(e){
+    alert("No se pudo restaurar: "+e.message);
+  }finally{
+    input.value="";
+  }
 }
+
 function startTimer(seconds){
- stopTimer();
- timerEnd=Date.now()+seconds*1000;
- function tick(){
- const left=Math.max(0,Math.ceil((timerEnd-Date.now())/1000));
- const el=document.getElementById("timer");
- if(el)el.textContent=String(Math.floor(left/60)).padStart(2,"0")+":"+String(left%60).padStart(2,"0");
- if(left===0)stopTimer();
- }
- tick();
- timerInterval=setInterval(tick,250);
+  stopTimer();
+
+  timerEnd=Date.now()+seconds*1000;
+
+  function tick(){
+    const left=Math.max(
+      0,
+      Math.ceil((timerEnd-Date.now())/1000)
+    );
+
+    const el=document.getElementById("timer");
+
+    if(el){
+      el.textContent=
+        String(Math.floor(left/60)).padStart(2,"0")+
+        ":"+
+        String(left%60).padStart(2,"0");
+    }
+
+    if(left===0)stopTimer();
+  }
+
+  tick();
+  timerInterval=setInterval(tick,250);
 }
+
 function stopTimer(){
- if(timerInterval)clearInterval(timerInterval);
- timerInterval=null;
+  if(timerInterval)clearInterval(timerInterval);
+  timerInterval=null;
 }
+
+/*
+ * Registro del Service Worker.
+ */
+
 if("serviceWorker" in navigator){
- window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
+  window.addEventListener("load",()=>{
+    navigator.serviceWorker.register("./sw.js")
+      .catch(()=>{});
+  });
 }
+
 show("inicio");
+
 </script>
+
+<!-- Fichas de técnica de los ejercicios -->
+<script src="./tecnica.js?v=1"></script>
+
 </body>
 </html>
-
