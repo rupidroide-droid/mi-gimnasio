@@ -1,2 +1,2 @@
 # mi-gimnasio
-App para el Gum
+App para el Gym
