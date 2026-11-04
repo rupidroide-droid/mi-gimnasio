@@ -1,0 +1,20 @@
+
+{
+  "name": "Mi Gimnasio - Entrenador Personal",
+  "short_name": "Mi Gimnasio",
+  "description": "Rutinas de entrenamiento, registro de pesos e historial personal",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f1f5f9",
+  "theme_color": "#14283d",
+  "lang": "es",
+  "icons": [
+    {
+      "src": "./icono.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
