@@ -1,23 +1,20 @@
 
 /*
  * MI GIMNASIO
- * Service Worker - Fase 1, versión 1.0
- *
- * Guarda los archivos de la aplicación
- * para permitir su uso sin conexión.
- *
- * Los entrenamientos y pesos se almacenan
- * en el dispositivo mediante localStorage.
+ * Service Worker - Versión 2
+ * Funcionamiento sin conexión
  */
 
-const CACHE = "mi-gimnasio-v1";
+const CACHE = "mi-gimnasio-v2";
 
 const ARCHIVOS = [
   "./",
   "./index.html",
-  "./manifest.json"
+  "./manifest.json",
+  "./FFB8CAB0-13CD-4DBB-96A6-D924C18F5F70.png"
 ];
 
+// Instalar y guardar los archivos
 self.addEventListener("install", evento => {
   evento.waitUntil(
     caches.open(CACHE)
@@ -26,48 +23,35 @@ self.addEventListener("install", evento => {
   );
 });
 
+// Eliminar versiones antiguas de caché
 self.addEventListener("activate", evento => {
   evento.waitUntil(
-    caches.keys()
-      .then(claves =>
-        Promise.all(
-          claves
-            .filter(clave =>
-              clave.startsWith("mi-gimnasio-") &&
-              clave !== CACHE
-            )
-            .map(clave => caches.delete(clave))
-        )
+    caches.keys().then(claves =>
+      Promise.all(
+        claves
+          .filter(clave =>
+            clave.startsWith("mi-gimnasio-") &&
+            clave !== CACHE
+          )
+          .map(clave => caches.delete(clave))
       )
-      .then(() => self.clients.claim())
+    ).then(() => self.clients.claim())
   );
 });
 
+// Servir archivos guardados sin conexión
 self.addEventListener("fetch", evento => {
   if (evento.request.method !== "GET") return;
 
-  const url = new URL(evento.request.url);
-
-  if (url.origin !== self.location.origin) return;
+  if (
+    new URL(evento.request.url).origin !==
+    self.location.origin
+  ) return;
 
   evento.respondWith(
     caches.match(evento.request)
-      .then(guardado => {
-        if (guardado) return guardado;
-
-        return fetch(evento.request)
-          .then(respuesta => {
-            if (respuesta.ok) {
-              const copia = respuesta.clone();
-
-              caches.open(CACHE)
-                .then(cache =>
-                  cache.put(evento.request, copia)
-                );
-            }
-
-            return respuesta;
-          });
-      })
+      .then(respuesta =>
+        respuesta || fetch(evento.request)
+      )
   );
 });
