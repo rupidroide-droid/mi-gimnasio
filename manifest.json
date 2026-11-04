@@ -11,9 +11,9 @@
   "lang": "es",
   "icons": [
     {
-      "src": "./icono.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
+      "src": "src": "./FFB8CAB0-13CD-4DBB-96A6-D924C18F5F70.png"
+      "sizes": "1024x1024",
+      "type": "image/png"
       "purpose": "any"
     }
   ]
